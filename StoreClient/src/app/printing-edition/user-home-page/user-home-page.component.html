@@ -1,0 +1,74 @@
+<mat-sidenav-container class="side-menu">
+    <mat-sidenav opened mode="side">
+  <mat-form-field class="product-type-select">
+    <mat-select [formControl]="productTypes" placeholder="Product type" multiple >
+      <mat-option *ngFor="let element of types"
+        [disabled]="productTypes.value.length === 1 && productTypes.value[0] === element"
+        [value]="element" (click)="getFiltered()">{{element}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="min-price">
+    <input matInput type="number" [value]="filterModel.minPrice" min="0"
+      placeholder="Min price" [(ngModel)]="minPrice">
+  </mat-form-field>
+  <mat-form-field class="max-price">
+    <input matInput type="number" [value]="filterModel.maxPrice" min="0"
+      placeholder="Max price" [(ngModel)]="maxPrice">
+  </mat-form-field>
+  <button class="confirm-filters" mat-raised-button color="primary"
+    (click)="getFiltered()">Confirm filters</button>
+  <div [hidden]="!isLoggedIn()">
+    <a href="http://localhost:4200/account/logIn">
+      <mat-icon matTooltip="Log in as administrator" matTooltipPosition="above"
+      class="settings-icon" svgIcon="settings" aria-label="Settings icon"></mat-icon>
+    </a>
+  </div>
+</mat-sidenav>
+  <div [formGroup]="filterForm">
+  <mat-form-field class="search-string" color="primary">
+    <input matInput placeholder="search" (keyup.enter)="checkMinLength()" [matAutocomplete]="auto"
+    formControlName="searchString">
+    <mat-error *ngIf="filterForm.get('searchString').errors">Must be more then 3 characters</mat-error>
+  </mat-form-field>
+  <mat-icon class="search-icon" svgIcon="search" aria-label="Delete icon" (click)="checkMinLength()"></mat-icon>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let product of printingEditions.items" [value]="product.title">
+        <span>{{product.title}}</span>
+    </mat-option>
+  </mat-autocomplete>
+  <mat-form-field class="filter-price-select">
+      <mat-select placeholder="Sort price" formControlName="sortType">
+          <mat-option *ngFor="let price of filterPriceDirection" [value]="filterModel.sortType"
+            (click)="setDirectionSort(price)">{{price}}</mat-option>
+        </mat-select>
+  </mat-form-field>
+  <mat-form-field class="currency-select">
+      <mat-select placeholder="Currency" formControlName="formCurrency">
+          <mat-option *ngFor="let element of currency" [value]="filterModel.currency"
+            (click)="setCurrency(element)">{{element}}</mat-option>
+        </mat-select>
+  </mat-form-field>
+  <mat-grid-list cols="6" rowHeight="300px" gutterSize="20px">
+    <mat-grid-tile *ngFor="let product of booksOnPage"
+      [colspan]="2"
+      [rowspan]="1">
+      <mat-icon class="book-icon" svgIcon="mainBook" aria-label="Book icon"
+      (click)="getProductDetails(product.id)"></mat-icon>
+      <mat-grid-tile-header [style.background]="'white'">
+        <h2>{{product.title}}</h2>
+      </mat-grid-tile-header>
+      <mat-grid-tile-footer [style.background]="'white'">
+        <h2>Authors: {{displayAuthors(product.authors)}}.</h2>
+      </mat-grid-tile-footer>
+      <h2 class="display-price">{{getPrice(product.price.toFixed(2), product.currency)}}</h2>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-paginator [length]="totalProductCount"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageSize]="filterModel.pageSize"
+    (page)="setPaginationOptions($event)"
+    showFirstLastButtons>
+  </mat-paginator>
+  <br>
+</div>
+</mat-sidenav-container>

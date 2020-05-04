@@ -1,0 +1,69 @@
+<h1>User Management</h1>
+<div [formGroup]="filterForm" (ngSubmit)="getUsers()">
+  <mat-form-field class="search-string">
+    <input matInput placeholder="search"
+      (keyup.enter)="searchStringMinCharactersCheck()"
+      [matAutocomplete]="auto" formControlName="searchString">
+    <mat-error *ngIf="filterForm.get('searchString').errors">Must be at least 3 characters</mat-error>
+  </mat-form-field>
+  <mat-icon class="search" svgIcon="search" aria-label="Delete icon"
+    (click)="searchStringMinCharactersCheck()"></mat-icon>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let user of users.items" [value]="user.firstName+ ' ' + user.lastName">
+        <span>{{user.firstName + " " + user.lastName}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  <mat-table class="user-table" [dataSource]="users.items" matSort
+    (matSortChange)="setAscendingSort($event.direction, $event.active)">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> User Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.firstName + " " + element.lastName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>User Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="userStatus">
+      <mat-header-cell *matHeaderCellDef class="status-header">
+        <mat-select [formControl]="status" placeholder="User status" multiple
+          class="status-select" (blur)="getUsers()">
+          <mat-option *ngFor="let element of statuses"
+            [disabled]="status.value.length === 1 && status.value[0] === element"
+            [value]="element" (click)="getUsers()">{{element}}</mat-option>
+        </mat-select>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div *ngIf="element.status == 1" class="alignment">
+          <section class="example-section">
+            <mat-slide-toggle (click)="blockUser(element.id, true)"
+              checked color="primary"></mat-slide-toggle>
+          </section>
+        </div>
+        <div *ngIf="element.status == 2" class="alignment">
+          <section class="example-section">
+            <mat-slide-toggle (click)="blockUser(element.id, false)"
+              color="primary"></mat-slide-toggle>
+          </section>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="userFeatures">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="features">
+        <mat-icon class="pencil" svgIcon="pencil" aria-label="Edit icon"
+          (click)="openEditDialog(element.id, element.firstName, element.lastName)"></mat-icon>
+        <mat-icon class="delete" svgIcon="delete" aria-label="Delete icon"
+          (click)="openDeleteDialog(element.id)"></mat-icon>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="totalUsersCount"
+    [pageSize]="filterModel.pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+   (page)="setPaginationOptions($event)" showFirstLastButtons>
+  </mat-paginator>
+  <br>
+</div>

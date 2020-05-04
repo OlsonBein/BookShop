@@ -1,0 +1,72 @@
+<form class="user-profile" [formGroup]="updateForm">
+  <div>
+    <div class="user-photo" *ngIf="user.avatar !== null">
+      <img [src]="image" (click)="displayOrHideInput()" width="200px" height="200px"
+        matTooltip="Click to choose a photo" matTooltipPosition="right">
+    </div>
+    <div class="default-photo" *ngIf="user.avatar === null">
+      <mat-icon svgIcon="userIcon" aria-label="User icon"
+        matTooltip="Click to choose a photo" matTooltipPosition="right"
+        (click)="displayOrHideInput()"></mat-icon>
+    </div>
+    <div [hidden]="!appearPhotoInput" class="input-file">
+      <input type="file" (change)="onFileSelected($event)" formControlName="avatar">
+        <button mat-raised-button color="primary" (click)="setPhoto()" [disabled]="selectedFile === null">Save photo</button>
+    </div>
+  </div>
+  <h2>My profile</h2>
+  <div class="input-form">
+    <mat-form-field color="primary">
+      <input matInput placeholder="First name" [value]="user.firstName"
+        formControlName="firstName" [(ngModel)]="user.firstName">
+      <mat-error *ngIf="updateForm.get('firstName').hasError('required')">First Name is required</mat-error>
+      <mat-error *ngIf="updateForm.get('firstName').errors">The Name must be between 4 and 20 characters</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-form">
+    <mat-form-field color="primary">
+      <input matInput placeholder="Last name" [value]="user.lastName"
+      [(ngModel)]="user.lastName"  formControlName="lastName">
+      <mat-error *ngIf="updateForm.get('lastName').hasError('required')">Last Name is required</mat-error>
+      <mat-error *ngIf="updateForm.get('lastName').errors">The Name must be between 4 and 20 characters</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-form">
+    <mat-form-field color="primary">
+      <input matInput type="email" placeholder="E-mail" [value]="user.email"
+        [(ngModel)]="user.email" formControlName="email">
+      <mat-error *ngIf="updateForm.get('email').hasError('email')">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="updateForm.get('email').hasError('required')">Email is required</mat-error>
+    </mat-form-field>
+  </div><br>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Change Password
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    <div class="input-form">
+      <mat-form-field color="primary">
+        <input matInput placeholder="Old Password" type="password" formControlName="oldPassword" required>
+        <mat-error *ngIf="updateForm.get('oldPassword') || updateForm.get('oldPassword').touched">Please enter a valid password</mat-error>
+        <mat-error *ngIf="updateForm.get('oldPassword').hasError('required')">Password is required</mat-error>
+      </mat-form-field><br>
+      <mat-form-field color="primary">
+        <input matInput placeholder="New Password" type="password" formControlName="newPassword" required>
+        <mat-error *ngIf="updateForm.get('newPassword') || updateForm.get('newPassword').touched">Please enter a valid password</mat-error>
+        <mat-error *ngIf="updateForm.get('newPassword').hasError('required')">Password is required</mat-error>
+      </mat-form-field><br>
+      <mat-form-field color="primary">
+        <input matInput placeholder="Confirm Password" (change)="matchPassword()" type="password" formControlName="confirmPassword" required>
+        <mat-error *ngIf="updateForm.get('confirmPassword') || updateForm.get('confirmPassword').touched">Please enter a valid password</mat-error>
+        <mat-error *ngIf="!matchPassword()">Passwords must match</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+  </mat-accordion>
+  <button mat-raised-button class="cancel-button" mat-button color="primaty"
+    color="primary" (click)="refreshPage()">Cancel</button>
+  <button mat-raised-button class="save-button" mat-button color="primaty"
+    color="primary" (click)="editProfile()">Save</button>
+</form>

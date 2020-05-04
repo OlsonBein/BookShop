@@ -1,0 +1,57 @@
+mat-table {
+  width: 96%;
+  margin-left: 2%;
+}
+
+.mat-header-row {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid black;
+}
+
+.mat-row {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid black;
+}
+
+.mat-cell {
+  font-size: 16px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: left;
+}
+
+.mat-header-cell {
+  padding-left: 10px;
+  color: black;
+  background-color: rgb(63, 81, 181);
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+mat-paginator {
+  color: black;
+  background-color: gray;
+  width: 96%;
+  margin-left: 2%;
+}
+
+.order-header {
+  width: 40%;
+}
+
+.order-row {
+  width: 40%;
+}
+
+h1 {
+  margin-left: 2%;
+}
+
+.search-string {
+  margin-left: 2%;
+}
+

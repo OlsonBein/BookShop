@@ -1,0 +1,28 @@
+<mat-table [dataSource]="cartModel.orderItems">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.productTitle}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>Unit Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{setUnitPrice(element)}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="quantity">
+    <mat-header-cell *matHeaderCellDef>Qty</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.count}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>Order Amount</mat-header-cell>
+    <mat-cell *matCellDef="let element">$ {{element.amount.toFixed(2)}}
+      <mat-icon class="delete" svgIcon="delete" aria-label="Delete icon" (click)="deleteOrderItem(element)"></mat-icon>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+</mat-table>
+<h2>Total amount: $ {{setTotalAmount().toFixed(2)}}</h2>
+<button class="cancel-button" mat-raised-button color="primary"
+  (click)="clickCancel()">Cancel</button>
+<button class="buy-button" mat-raised-button color="primary"
+  (click)="buyProducts()">Buy</button>
+

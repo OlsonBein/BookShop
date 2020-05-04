@@ -1,0 +1,38 @@
+<form class="login-form" [formGroup]="logInForm">
+  <div>
+      <mat-icon class="user-icon" svgIcon="userIcon" aria-label="User icon"></mat-icon>
+    <h2>Log-In</h2>
+  </div>
+  <div class="input-form">
+    <mat-form-field color="primary">
+      <input matInput type="email" placeholder="Email" formControlName="email" required>
+      <mat-error *ngIf="logInForm.get('email').hasError('email') || logInForm.get('email').touched">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="logInForm.get('email').hasError('required')">Email is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-form">
+    <p><a routerLink="/account/resetPassword">Forgor your password?</a></p>
+    <mat-form-field color="primary">
+      <input matInput type="password" placeholder="Password" formControlName="password" required>
+      <mat-error *ngIf="logInForm.get('password') || logInForm.get('password').touched">
+          Please enter a valid password
+        </mat-error>
+        <mat-error *ngIf="logInForm.get('password').hasError('required')">Password is required</mat-error>
+    </mat-form-field><br>
+  </div>
+  <div class="input-form">
+    <mat-checkbox color="primary" formControlName="rememberMe">Remember Me
+      <button class="signin-button" color="primary" mat-raised-button
+        [disabled]="!logInForm.valid" (click)="logIn()" >Sign-In</button>
+    </mat-checkbox><br/><br/>
+  </div>
+  <div *ngIf="!isLoggedIn()">
+    <p>New to Book Publishing Company?</p>
+    <a routerLink="/account/registration">
+      <button class="singup-button" mat-raised-button color="primary">Sign-Up</button>
+    </a>
+  </div>
+</form>
+

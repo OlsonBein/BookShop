@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Store.BusinessLogicLayer": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

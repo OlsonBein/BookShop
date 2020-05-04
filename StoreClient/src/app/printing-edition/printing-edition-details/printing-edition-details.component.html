@@ -1,0 +1,18 @@
+<div class="product-details">
+  <div class="book-icon">
+    <mat-icon svgIcon="mainBook" aria-label="Book icon"></mat-icon>
+    <h2 class="product-title">{{productModel.title}}</h2>
+  </div>
+  <div class="product-authors">
+    <p>Authors: {{authors.value}}</p>
+  </div>
+  <h2>Product Description:</h2>
+  <p>{{productModel.description}}</p>
+  <div class="product-price">{{getPrice()}}
+  <mat-form-field class="product-quantity">
+    <input matInput type="number" min="0" placeholder="Qty" [(ngModel)]="orderItemModel.count">
+    <button class="add-to-card" mat-raised-button color="primary"
+      [disabled]="!isLoggedIn()" (click)="addProductToCard()">Add to card</button>
+  </mat-form-field>
+
+</div>

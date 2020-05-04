@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Edit profile - {{user.firstName + " " + user.lastName}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.firstName" placeholder="First name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.lastName" placeholder="Last name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="clickCancel()">Cansel</button>
+  <div class="save">
+    <button mat-raised-button color="primary" [mat-dialog-close]="user"
+      (click)="saveChanges()" cdkFocusInitial>Save</button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+}
+
+div {
+  text-align: center;
+}
+
+.cancel {
+  text-align: left;
+}
+
+.create {
+  margin-left: 50%;
+}

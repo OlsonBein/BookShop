@@ -1,0 +1,13 @@
+div {
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+button {
+  position: absolute;
+  left: 35%;
+  width: 20%;
+}

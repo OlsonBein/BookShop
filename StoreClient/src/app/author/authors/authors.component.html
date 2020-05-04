@@ -1,0 +1,55 @@
+<h1>Authors Management</h1>
+<div [formGroup]="filterForm">
+ <mat-form-field class="search-string" color="primary">
+    <input matInput placeholder="search" (keyup.enter)="checkSearchString()"
+      [matAutocomplete]="auto" formControlName="searchString">
+    <mat-error *ngIf="filterForm.get('searchString').errors">Must be at least 3 characters</mat-error>
+  </mat-form-field>
+  <mat-icon class="search" svgIcon="search" aria-label="Delete icon"
+    (click)="checkSearchString()"></mat-icon>
+  <mat-icon class="add" svgIcon="add" aria-label="Add icon" (click)="openCreateDialog()"></mat-icon>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let author of authors.items" [value]="author.name">
+        <span>{{author.name}}</span>
+    </mat-option>
+  </mat-autocomplete>
+  <mat-table class="author-table" [dataSource]="authors.items" matSort
+    (matSortChange)="setAscendingSort($event.direction, $event.active)">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="products">
+        <mat-header-cell class="row row3" mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+        <mat-cell class="row row3" mat-cell *matCellDef="let element">
+          <div>
+            <span *ngFor="let product of element.printingEditionTitles">{{product}}<br></span>
+          </div>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="features">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="features">
+        <mat-icon class="pencil" svgIcon="pencil" aria-label="Edit icon"
+          (click)="openUpdateDialog(element)"></mat-icon>
+        <mat-icon class="delete" svgIcon="delete" aria-label="Delete icon"
+          (click)="openDeleteDialog(element.id)"></mat-icon>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+    <mat-paginator [length]="totalAuthorsCount"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="setPaginationOptions($event)"
+      showFirstLastButtons>
+    </mat-paginator>
+    <br>
+</div>
+
+

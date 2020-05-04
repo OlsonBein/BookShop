@@ -1,0 +1,62 @@
+<div class="header">
+  <div class="inner-header">
+    <div class="logo-container">
+      <mat-icon class="book-icon" svgIcon="book" aria-label="Book icon"></mat-icon>
+      <div *ngIf="!isRoleAdmin()">
+        <a class="logo-container" href="http://localhost:4200/printingEdition/userHomePage">
+          <h1> Book Publishing Company</h1>
+        </a>
+      </div>
+      <div *ngIf="isRoleAdmin()">
+          <a class="logo-container" href="http://localhost:4200/printingEdition/PrintingEditions">
+            <h1> Book Publishing Company</h1>
+          </a>
+        </div>
+      <div *ngIf="!router.url.includes('account')">
+        <a *ngIf="!isLoggedIn()" href="http://localhost:4200/account/logIn" class="log-in"><strong>LogIn</strong></a>
+        <div *ngIf="!isRoleAdmin() && isLoggedIn()">
+            <mat-icon class="cart-icon" svgIcon="cart" aria-label="Cart icon"
+             (click)="openCartDialog()"></mat-icon>
+        </div>
+        <div *ngIf="isLoggedIn()">
+          <div *ngIf="currentUser.avatar === null">
+            <mat-icon class="avatar-icon" svgIcon="avatar"
+              aria-label="Avatar icon" [matMenuTriggerFor]="menu"></mat-icon>
+          </div>
+          <div class="user-image" *ngIf="currentUser.avatar !== null">
+            <img [src]="image" width="70px" height="70px" [matMenuTriggerFor]="menu"/>
+          </div>
+        </div>
+        <mat-menu #menu="matMenu">
+          <div *ngIf="!isRoleAdmin() && isLoggedIn()">
+            <a routerLink="/user/profile">
+              <button mat-menu-item>My profile</button>
+            </a>
+            <a routerLink="/order/userOrders">
+              <button mat-menu-item>My orders</button>
+            </a>
+            <button mat-menu-item (click)="logOut()">Log Out</button>
+          </div>
+          <div *ngIf="isRoleAdmin() && isLoggedIn()">
+            <a routerLink="/order/orders">
+              <button mat-menu-item>Order management</button>
+            </a>
+            <a routerLink="/user/users">
+              <button mat-menu-item>User management</button>
+            </a>
+            <a routerLink="/author/authors">
+              <button mat-menu-item>Author management</button>
+            </a>
+            <a routerLink="printingEdition/PrintingEditions">
+              <button mat-menu-item>Product management</button>
+            </a>
+            <a routerLink="/user/profile">
+              <button mat-menu-item>My profile</button>
+            </a>
+              <button mat-menu-item (click)="logOut()">Log Out</button>
+            </div>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>

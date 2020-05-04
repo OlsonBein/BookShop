@@ -1,0 +1,42 @@
+.user-profile {
+  margin-top: 10px;
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form > * {
+  width: 100%;
+}
+
+mat-icon {
+  padding-left: 40%;
+  width: 150px;
+  height: 150px;
+}
+
+.cancel-button {
+  margin-top: 10px;
+}
+
+.save-button {
+  float: right;
+  margin-top: 10px;
+}
+
+.input-file {
+  margin-top: 10px;
+}
+
+.user-photo {
+  margin-left: 20%;
+  border-radius: 50%;
+}
+
+img {
+  border-radius: 50%;
+}

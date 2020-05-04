@@ -1,0 +1,73 @@
+<h1>Printing Editions Management</h1>
+<div [formGroup]="filterForm">
+  <mat-form-field class="search-string" color="primary">
+    <input matInput placeholder="search" formControlName="searchString"
+     (keyup.enter)="checkSearchString()" [matAutocomplete]="auto">
+    <mat-error *ngIf="filterForm.get('searchString').errors">Must be at least 3 characters</mat-error>
+  </mat-form-field>
+  <mat-icon class="search" svgIcon="search" aria-label="Search icon"
+    (click)="checkSearchString()"></mat-icon>
+  <mat-icon class="add" svgIcon="add" aria-label="Add icon"
+    (click)="openCreateDialog()"></mat-icon>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let product of printingEditions.items" [value]="product.title">
+        <span>{{product.title}}</span>
+    </mat-option>
+  </mat-autocomplete>
+  <mat-table [dataSource]="printingEditions.items" matSort
+    (matSortChange)="setAscendingSort($event.direction, $event.active)">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <mat-header-cell mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef class="category">
+          <mat-select [formControl]="productType" placeholder="Product type" multiple>
+            <mat-option *ngFor="let element of productTypes"
+              [disabled]="productType.value.length === 1 && productType.value[0] === element"
+              [value]="element"
+              (click)="getFiltered()">{{element}}</mat-option>
+          </mat-select>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="category">{{getProductType(element.productType)}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef >Authors</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div>
+          <span *ngFor="let product of element.authors">{{product.name}}<br></span>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="features">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="features">
+        <mat-icon class="pencil" svgIcon="pencil" aria-label="Edit icon"
+          (click)="openUpdateDialog(element)"></mat-icon>
+        <mat-icon class="delete" svgIcon="delete" aria-label="Delete icon"
+          (click)="openDeleteDialog(element.id)"></mat-icon>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+    <mat-paginator [length]="totalProductsCount"
+      [pageSize]="filterModel.pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="setPaginationOptions($event)"
+      showFirstLastButtons>
+    </mat-paginator>
+    <br>
+</div>

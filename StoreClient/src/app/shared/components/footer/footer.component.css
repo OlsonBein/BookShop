@@ -1,0 +1,15 @@
+.footer{
+  background-color: rgb(172, 167, 167);
+  width: 100%;
+  height: 30px;
+  position: sticky;
+  top: 100%;
+}
+
+.book-icon {
+  margin-right: 3px;
+  margin-top: 2px;
+  float: right;
+  width: 30px;
+  height: 30px;
+}

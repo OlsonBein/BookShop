@@ -1,0 +1,74 @@
+h1 {
+  margin-left: 2%;
+}
+
+.mat-table {
+  margin-left: 2%;
+
+  width: 96%;
+}
+
+.mat-header-row {
+  background-color: rgb(63, 81, 181);
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid black;
+}
+
+.mat-row {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid black;
+}
+
+.mat-icon {
+  padding-left: 10px;
+}
+
+.mat-cell {
+  padding-right: 50px;
+  padding-left: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: left;
+}
+
+.mat-header-cell {
+  padding-right: 50px;
+  color: black;
+  padding-left: 10px;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+.mat-checkbox {
+  padding-left: 5px;
+}
+
+mat-paginator {
+  width: 96%;
+  margin-left: 2%;
+  color: black;
+  background-color: gray;
+}
+
+.search-string {
+  width: 15%;
+  margin-left: 2%;
+}
+
+.status-select {
+  width: 40%;
+}
+
+.pencil {
+  position: absolute;
+  right: 7%;
+}
+
+.delete {
+  position: absolute;
+  right: 4%;
+}

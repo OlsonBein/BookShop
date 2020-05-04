@@ -1,0 +1,53 @@
+h2 {
+    font-family: sans-serif;
+    padding-right: 100px;
+}
+
+mat-icon {
+  padding-left: 40%;
+  width: 150px;
+  height: 150px;
+}
+
+.login-form{
+  margin-top: 40px;
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
+button a {
+  margin-right: 150px;
+}
+
+a{
+  text-decoration: none;
+  float: right;
+}
+
+p{
+  text-align: center;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form > * {
+  width: 100%;
+}
+
+img{
+  padding-left: 40%;
+}
+
+.signin-button{
+  position: absolute;
+  right: 35%;
+}
+
+.singup-button{
+  position: absolute;
+  left: 40%;
+  width: 20%;
+}

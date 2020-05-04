@@ -1,0 +1,32 @@
+mat-icon {
+  width: 200px;
+  height: 200px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.product-title {
+  position: absolute;
+  left: 250px;
+  top: 100px;
+}
+
+.product-price {
+  font-size: 20px;
+  color: green;
+  position: absolute;
+  right: 50%;
+  top: 200px;
+}
+
+.product-quantity {
+  margin-left: 50px;
+  color: black;
+  width: 50px;
+}
+
+.add-to-card {
+  width: 150px;
+  position: absolute;
+  right: 50%;
+  top: 80px;
+}
