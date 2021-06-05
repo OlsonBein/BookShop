@@ -1,12 +1,12 @@
 <div mat-dialog-content class="dialog-content" [formGroup]="productForm">
-  <h1>{{getActionName()}} Printing Edition</h1>
+  <h1>{{getActionName()}} Meal</h1>
   <mat-form-field>
     <input class="title-input" matInput #title maxlength="100"
-     formControlName="title" placeholder="Title"/>
+     formControlName="title" placeholder="Name"/>
     <mat-hint align="end">{{title.value.length}}/100</mat-hint>
   </mat-form-field>
   <mat-form-field class="dialog-product-type">
-      <mat-label>Select a product type</mat-label>
+      <mat-label>Select a meal type</mat-label>
       <mat-select formControlName="productType">
         <mat-option *ngFor="let element of productTypes" [value]="element"
           (click)="setProductType(element)">{{element}}</mat-option>
@@ -18,14 +18,18 @@
     <mat-hint align="end">{{description.value.length}}/1000</mat-hint>
   </mat-form-field>
   <mat-form-field class="dialog-list-authors">
-    <mat-select placeholder="Author" [formControl]="selectedAuthorsControl" multiple>
+    <mat-select placeholder="Food distributor" [formControl]="selectedAuthorsControl" multiple>
       <mat-option *ngFor="let author of authors" [value]="author">{{author.name}}</mat-option>
     </mat-select>
-  </mat-form-field><br>
+  </mat-form-field>
   <mat-form-field>
     <input matInput formControlName="price" min="0" type="number"
       placeholder="price"/>
   </mat-form-field>
+  <mat-form-field class="dialog-currency">
+    <input matInput formControlName="sale" min="0" type="number"
+      placeholder="sale"/>
+  </mat-form-field><br>
   <mat-form-field class="dialog-currency">
     <mat-select placeholder="Currency"  formControlName="currency">
       <mat-option *ngFor="let element of currency" [value]="element"
@@ -34,7 +38,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions class="dialog-actions">
-  <button mat-raised-button color="primary" (click)="clickCancel()">Cansel</button>
+  <button mat-raised-button color="primary" (click)="clickCancel()">Cancel</button>
   <div class="create">
     <button mat-raised-button color="primary" [mat-dialog-close]="true"
       (click)="chooseMethod()" cdkFocusInitial>{{getActionName()}}</button>

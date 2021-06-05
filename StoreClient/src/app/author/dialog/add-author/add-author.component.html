@@ -1,11 +1,11 @@
-<h1 mat-dialog-title>{{getActionName()}} Author</h1>
+<h1 mat-dialog-title>{{getActionName()}} Food distributor</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <input matInput [(ngModel)]="authorModel.author.name" placeholder="Name"/>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="clickCancel()">Cansel</button>
+  <button mat-raised-button color="primary" (click)="clickCancel()">Cancel</button>
   <div class="create">
     <button mat-raised-button color="primary" [mat-dialog-close]="authorModel.author" (click)="chooseMethod()"
       cdkFocusInitial>{{getActionName()}}</button>

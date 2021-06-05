@@ -13,7 +13,7 @@ using static Store.DataAccessLayer.Common.Enums.Entity.Enums;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class AuthorInPrintingEditionRepository : BaseEFRepositpory<AuthorInPrintingEdition>,  IAuthorInPrintingEditionRepository
+    public class AuthorInPrintingEditionRepository : BaseEFRepository<AuthorInPrintingEdition>,  IAuthorInPrintingEditionRepository
     {
         private readonly ApplicationContext _dbContext;
 

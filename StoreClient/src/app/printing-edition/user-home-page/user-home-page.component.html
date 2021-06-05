@@ -7,17 +7,20 @@
         [value]="element" (click)="getFiltered()">{{element}}</mat-option>
     </mat-select>
   </mat-form-field>
+  <div>
   <mat-form-field class="min-price">
     <input matInput type="number" [value]="filterModel.minPrice" min="0"
       placeholder="Min price" [(ngModel)]="minPrice">
   </mat-form-field>
+  </div>
   <mat-form-field class="max-price">
     <input matInput type="number" [value]="filterModel.maxPrice" min="0"
       placeholder="Max price" [(ngModel)]="maxPrice">
   </mat-form-field>
+  <br>
   <button class="confirm-filters" mat-raised-button color="primary"
-    (click)="getFiltered()">Confirm filters</button>
-  <div [hidden]="!isLoggedIn()">
+    (click)="getFiltered()">Confirm</button>
+  <div display="none">
     <a href="http://localhost:4200/account/logIn">
       <mat-icon matTooltip="Log in as administrator" matTooltipPosition="above"
       class="settings-icon" svgIcon="settings" aria-label="Settings icon"></mat-icon>
@@ -61,6 +64,7 @@
         <h2>Authors: {{displayAuthors(product.authors)}}.</h2>
       </mat-grid-tile-footer>
       <h2 class="display-price">{{getPrice(product.price.toFixed(2), product.currency)}}</h2>
+      <h2 class="display-price">{{calculatePriceWithSale(product)}}</h2>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-paginator [length]="totalProductCount"

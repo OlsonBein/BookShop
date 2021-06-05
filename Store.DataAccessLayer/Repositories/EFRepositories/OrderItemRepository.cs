@@ -4,7 +4,7 @@ using Store.DataAccessLayer.Repositories.Interfaces;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class OrderItemRepository : BaseEFRepositpory<OrderItem>, IOrderItemRepository
+    public class OrderItemRepository : BaseEFRepository<OrderItem>, IOrderItemRepository
     {
         private readonly ApplicationContext _dbContext;
         public OrderItemRepository(ApplicationContext dbContext)

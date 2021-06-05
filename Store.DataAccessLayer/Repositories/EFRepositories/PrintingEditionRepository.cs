@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class PrintingEditionRepository : BaseEFRepositpory<PrintingEdition>, IPrintingEditionRepository
+    public class PrintingEditionRepository : BaseEFRepository<PrintingEdition>, IPrintingEditionRepository
     {
         private readonly ApplicationContext _dbContext;
 

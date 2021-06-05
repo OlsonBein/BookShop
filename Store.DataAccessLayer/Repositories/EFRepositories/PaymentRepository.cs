@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class PaymentRepository : BaseEFRepositpory<Payment>, IPaymentRepository
+    public class PaymentRepository : BaseEFRepository<Payment>, IPaymentRepository
     {
         private readonly ApplicationContext _dbContext;
         public PaymentRepository(ApplicationContext dbContext)

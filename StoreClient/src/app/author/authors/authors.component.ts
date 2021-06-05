@@ -113,7 +113,7 @@ export class AuthorsComponent implements OnInit {
   }
 
   openDeleteDialog(id: number): void {
-    let nameEntityToDelete = NameEntityToDelete[NameEntityToDelete.Author];
+    let nameEntityToDelete = "Food distributor";
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '400px',
       data: {nameEntityToDelete}

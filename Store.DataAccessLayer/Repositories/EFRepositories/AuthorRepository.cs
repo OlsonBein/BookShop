@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class AuthorRepository : BaseEFRepositpory<Author>, IAuthorRepository
+    public class AuthorRepository : BaseEFRepository<Author>, IAuthorRepository
     {
         private readonly ApplicationContext _dbContext;
 

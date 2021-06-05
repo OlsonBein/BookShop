@@ -13,11 +13,11 @@ mat-grid-list {
 }
 
 mat-paginator {
-  width: 85%;
+  width: 100%;
   color: black;
   background-color: gray;
   margin-top: 20px;
-  position: fixed;
+  position: flex;
   top: 89%;
 }
 
@@ -94,28 +94,25 @@ mat-grid-list {
 }
 
 mat-grid-list .display-price {
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .min-price {
-  position: absolute;
-  top: 20%;
+  position: flex;  
   left: 20px;
   width: 100px;
 }
 
 .max-price {
-  position: absolute;
-  top: 20%;
-  left: 150px;
+  position: flex;
+  left: 20px;
   width: 100px;
 }
 
 .confirm-filters {
-  position: absolute;
-  top: 30%;
-  left: 20%;
-  width: 50%;
+  position: flex;
+  left: 20px;
+  width: 100px;
 }
 
 mat-sidenav {

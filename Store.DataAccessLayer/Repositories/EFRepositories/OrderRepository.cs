@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Store.DataAccessLayer.Repositories.EFRepositories
 {
-    public class OrderRepository : BaseEFRepositpory<Order>, IOrderRepository
+    public class OrderRepository : BaseEFRepository<Order>, IOrderRepository
     {
         private readonly ApplicationContext _dbContext;
         public OrderRepository(ApplicationContext dbContext)

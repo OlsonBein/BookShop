@@ -45,7 +45,7 @@ export class ConfirmPaymentComponent implements OnInit {
 
   setUnitPrice(orderItemModel: OrderItemModelItem): string {
     let unitPrice = orderItemModel.amount / orderItemModel.count;
-    return `$ ${unitPrice}`;
+    return `$ ${unitPrice.toFixed(2)}`;
   }
 
   setTotalAmount(): number {

@@ -43,7 +43,7 @@ export class PrintingEditionDetailsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.iconRegistry.addSvgIcon('mainBook', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/mainBook.svg`));
+    this.iconRegistry.addSvgIcon('mainBook', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/healthy-eating.svg`));
     this.getPrintingEditionById();
   }
 
@@ -61,7 +61,7 @@ export class PrintingEditionDetailsComponent implements OnInit {
   getPrice(): string {
     let currencyString;
     currencyString = Currency[this.productModel.currency];
-    return `Price: ${this.productModel.price} ${currencyString}`;
+    return `Price: ${(this.productModel.price * (1 - this.productModel.sale/100)).toFixed(2)} ${currencyString}`;
   }
 
   getAuthorsNames(): string[] {
@@ -75,7 +75,8 @@ export class PrintingEditionDetailsComponent implements OnInit {
   addProductToCard(): void {
     this.orderItemModel.printingEditionId = this.productModel.id;
     this.orderItemModel.productTitle = this.productModel.title;
-    this.orderItemModel.amount = this.productModel.price * this.orderItemModel.count;
+    
+    this.orderItemModel.amount = (this.productModel.price * (1 - this.productModel.sale/100)) * this.orderItemModel.count;
     let sameProduct = this.checkForSameProductInCart();
     if (sameProduct && this.orderItemModel.count > 0) {
       this.localStorageHelper.storeCartItem(this.orderItemModel);

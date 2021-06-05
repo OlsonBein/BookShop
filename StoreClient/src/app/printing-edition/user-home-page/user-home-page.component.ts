@@ -65,9 +65,8 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.iconRegistry.addSvgIcon('mainBook', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/mainBook.svg`))
-      .addSvgIcon('search', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/search.svg`))
-      .addSvgIcon('settings', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/settings.svg`));
+    this.iconRegistry.addSvgIcon('mainBook', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/healthy-eating.svg`))
+      .addSvgIcon('search', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/search.svg`));
     this.localStorageHelper.user.subscribe(data => {
       this.currentUser = data;
     });
@@ -145,10 +144,19 @@ export class HomeComponent implements OnInit {
   }
 
   getPrice(price: number, currencyType: string): string {
-    return `Price: ${price} ${Currency[currencyType]}`;
+    let oldPrice = price;
+    return `Price: ${oldPrice} ${Currency[currencyType]}`;
   }
 
   getProductDetails(productId: number): void {
     this.router.navigate([`/printingEdition/productDetails/${productId}`]);
+  }
+
+  calculatePriceWithSale(printingEdition: PrintingEditionModelItem): string {
+    let newPrice = printingEdition.sale > 0 ? printingEdition.price * (1 - printingEdition.sale / 100) : printingEdition.price;
+    if (printingEdition.sale == 0) {
+      return "";
+    }
+    return `New price: ${newPrice.toFixed(2)}`;
   }
 }

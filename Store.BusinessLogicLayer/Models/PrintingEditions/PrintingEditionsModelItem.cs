@@ -14,6 +14,7 @@ namespace Store.BusinessLogicLayer.Models.PrintingEdition
         public StatusType Status { get; set; }
         public Currency Currency { get; set; }
         public ProductType ProductType { get; set; }
+        public int Sale { get; set; }
         public ICollection<AuthorsModelItem> Authors { get; set; }
 
         public PrintingEditionsModelItem()

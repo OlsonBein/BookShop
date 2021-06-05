@@ -9,16 +9,16 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.paymentDate}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="product">
+    <!-- <ng-container matColumnDef="product">
       <mat-header-cell *matHeaderCellDef >Product</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <div>
           <span *ngFor="let type of element.orderItems">{{getProductType(type.productType)}}<br></span>
         </div>
       </mat-cell>
-    </ng-container>
+    </ng-container> -->
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Meal</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <div>
           <span *ngFor="let title of element.orderItems">{{title.productTitle}}<br></span>

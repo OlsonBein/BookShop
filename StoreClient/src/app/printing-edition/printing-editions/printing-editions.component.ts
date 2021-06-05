@@ -136,7 +136,7 @@ export class PrintingEditionsComponent implements OnInit {
   }
 
   openDeleteDialog(id: number): void {
-    let nameEntityToDelete = NameEntityToDelete[NameEntityToDelete.PrintingEdition];
+    let nameEntityToDelete = "Meal";
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '400px',
       data: {nameEntityToDelete}

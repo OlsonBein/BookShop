@@ -14,6 +14,7 @@ namespace Store.DataAccessLayer.Repositories.EFRepositories
         public StatusType Status { get; set; }
         public Currency Currency { get; set; }
         public ProductType Type { get; set; }
+        public int Sale { get; set; }
 
         [NotMapped]
         [Write(false)]

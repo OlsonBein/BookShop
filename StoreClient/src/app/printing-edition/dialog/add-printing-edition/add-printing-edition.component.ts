@@ -37,7 +37,8 @@ export class AddPrintingEditionComponent implements OnInit {
       description: [this.product.printingEdition.description],
       productType: [ProductType[this.product.printingEdition.productType]],
       currency: [Currency[this.product.printingEdition.currency]],
-      price: [this.product.printingEdition.price]
+      price: [this.product.printingEdition.price],
+      sale: [this.product.printingEdition.sale],
     });
     this.selectedAuthorsControl = new FormControl();
   }
@@ -55,6 +56,7 @@ export class AddPrintingEditionComponent implements OnInit {
     this.product.printingEdition.title = this.productForm.controls.title.value;
     this.product.printingEdition.price = this.productForm.controls.price.value;
     this.product.printingEdition.authors = this.selectedAuthorsControl.value;
+    this.product.printingEdition.sale = this.productForm.controls.sale.value;
     if ( this.product.actionName === Action.Create) {
       this.createPrintingEdition();
       return;

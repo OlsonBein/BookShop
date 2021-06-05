@@ -51,9 +51,9 @@ export class UserOrdersComponent implements OnInit {
     this.userId = this.localStorageHelper.getUser().id;
   }
 
-  getProductType(type: number): string {
-    return ProductType[type];
-  }
+  // getProductType(type: number): string {
+  //   return ProductType[type];
+  // }
 
   getStatusType(type: number): string {
     return OrderStatus[type];

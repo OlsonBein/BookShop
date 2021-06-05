@@ -11,4 +11,5 @@ export class PrintingEditionModelItem extends BaseModel {
   public id?: number;
   public description?: string;
   public status?: OrderStatus;
+  public sale: number = 0;
 }

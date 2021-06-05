@@ -4,12 +4,12 @@
       <mat-icon class="book-icon" svgIcon="book" aria-label="Book icon"></mat-icon>
       <div *ngIf="!isRoleAdmin()">
         <a class="logo-container" href="http://localhost:4200/printingEdition/userHomePage">
-          <h1> Book Publishing Company</h1>
+          <h1>EcoEat</h1>
         </a>
       </div>
       <div *ngIf="isRoleAdmin()">
           <a class="logo-container" href="http://localhost:4200/printingEdition/PrintingEditions">
-            <h1> Book Publishing Company</h1>
+            <h1>EcoEat</h1>
           </a>
         </div>
       <div *ngIf="!router.url.includes('account')">
@@ -45,10 +45,10 @@
               <button mat-menu-item>User management</button>
             </a>
             <a routerLink="/author/authors">
-              <button mat-menu-item>Author management</button>
+              <button mat-menu-item>Food distributor management</button>
             </a>
             <a routerLink="printingEdition/PrintingEditions">
-              <button mat-menu-item>Product management</button>
+              <button mat-menu-item>Meal management</button>
             </a>
             <a routerLink="/user/profile">
               <button mat-menu-item>My profile</button>

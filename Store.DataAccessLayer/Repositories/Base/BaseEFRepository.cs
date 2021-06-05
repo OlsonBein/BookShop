@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Store.DataAccessLayer.Repositories.Base
 {
-    public class BaseEFRepositpory<TEntity> : IBaseEFRepository<TEntity> where TEntity : BaseEntity
+    public class BaseEFRepository<TEntity> : IBaseEFRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly ApplicationContext _dbContext;
 
-        public BaseEFRepositpory(ApplicationContext dbContext)
+        public BaseEFRepository(ApplicationContext dbContext)
         {
             _dbContext = dbContext;
         }

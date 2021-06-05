@@ -15,7 +15,7 @@ namespace Store.DataAccessLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -274,7 +274,7 @@ namespace Store.DataAccessLayer.Migrations
 
                     b.HasIndex("PrintingEditionId");
 
-                    b.ToTable("AuthorInBooks");
+                    b.ToTable("AuthorInPrintingEditions");
                 });
 
             modelBuilder.Entity("Store.DataAccessLayer.Repositories.EFRepositories.Order", b =>
@@ -387,6 +387,9 @@ namespace Store.DataAccessLayer.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Sale")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

@@ -20,7 +20,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.iconRegistry.addSvgIcon('book', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/book.svg`));
+    this.iconRegistry.addSvgIcon('book', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/bread.svg`));
   }
 
 }

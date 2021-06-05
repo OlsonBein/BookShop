@@ -1,4 +1,4 @@
-<h1>Authors Management</h1>
+<h1>Food distributor Management</h1>
 <div [formGroup]="filterForm">
  <mat-form-field class="search-string" color="primary">
     <input matInput placeholder="search" (keyup.enter)="checkSearchString()"
@@ -24,7 +24,7 @@
       <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="products">
-        <mat-header-cell class="row row3" mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+        <mat-header-cell class="row row3" mat-header-cell *matHeaderCellDef>Meal</mat-header-cell>
         <mat-cell class="row row3" mat-cell *matCellDef="let element">
           <div>
             <span *ngFor="let product of element.printingEditionTitles">{{product}}<br></span>

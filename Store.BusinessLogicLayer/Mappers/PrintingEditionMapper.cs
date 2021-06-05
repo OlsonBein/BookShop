@@ -25,6 +25,7 @@ namespace Store.BusinessLogicLayer.Mappers
                 Description = model.PrintingEdition.Description,
                 Id = model.PrintingEdition.Id,
                 Price = convertedPrice,
+                Sale = model.PrintingEdition.Sale,
                 Status = (BusinessEnums.StatusType)model.PrintingEdition.Status
             };
             var authorModel = new List<AuthorsModelItem>();
@@ -48,7 +49,8 @@ namespace Store.BusinessLogicLayer.Mappers
                 Price = changedPrice,
                 Status = (DataEnums.StatusType)model.Status,
                 Title = model.Title,
-                Type = (DataEnums.ProductType)model.ProductType
+                Type = (DataEnums.ProductType)model.ProductType,
+                Sale = model.Sale
             };
             return result;
         }
@@ -63,7 +65,8 @@ namespace Store.BusinessLogicLayer.Mappers
                 Price = edition.Price,
                 Status = (BusinessEnums.StatusType)edition.Status,
                 Title = edition.Title,
-                ProductType = (BusinessEnums.ProductType)edition.Type
+                ProductType = (BusinessEnums.ProductType)edition.Type,
+                Sale = edition.Sale
             };
             return result;
         }
@@ -75,7 +78,8 @@ namespace Store.BusinessLogicLayer.Mappers
             edition.Status = (DataEnums.StatusType)model.Status;
             edition.Price = model.Price;
             edition.Description = model.Description;
-            edition.Currency = (DataEnums.Currency)model.Currency;                    
+            edition.Currency = (DataEnums.Currency)model.Currency;
+            edition.Sale = model.Sale;
             return edition;            
         }
     }

@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     this.localStorageHelper.cart.subscribe((data: CartModelItem) => {
       this.currentCart = data;
     });
-    this.iconRegistry.addSvgIcon('book', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/book.svg`))
+    this.iconRegistry.addSvgIcon('book', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/bread.svg`))
     .addSvgIcon('cart', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/cart.svg`))
     .addSvgIcon('avatar', this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imagesPath}/avatar.svg`));
   }

@@ -145,12 +145,16 @@ namespace Store.BusinessLogicLayer.Services
         {
             var user = await _userRepository.GetByIdAsync(model.Id);
             user.Avatar = model.Avatar;
+            var role = await _userRepository.GetRoleAsync(user);
             var result = await _userRepository.UpdateAsync(user);
             if (!result)
             {
                 model.Errors.Add(ErrorConstants.ImpossibleToSetPhoto);
             }
-            return model;
+
+            var userModel = UserMapper.MapEntityToModel(user);
+            userModel.Role = role;
+            return userModel;
         }
     }
 }
